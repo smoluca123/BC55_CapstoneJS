@@ -68,6 +68,15 @@ function getValueInput() {
   };
   return InfoValue;
 }
+function NotiAlert(icon, title, timer) {
+  Swal.fire({
+    position: "center",
+    icon: icon,
+    title: title,
+    showConfirmButton: false,
+    timer: timer,
+  });
+}
 function getInfoProduct() {
   var Info = getValueInput();
   var product = new Product(
