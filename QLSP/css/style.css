@@ -1,0 +1,43 @@
+* {
+    margin: 0 ;
+    padding:  0
+}
+#row1{
+background-color: #006bcf;
+}
+.btn {
+margin: 10px 5px;
+}
+nav .navbar-brand {
+font-weight: 800;
+font-size: 24px;
+margin-left: 8px;
+}
+
+.form-inline .form-control {
+border-radius: 16px;
+}
+.form-control {
+border-radius: 14px;
+}
+.form-inline  .btn {
+border-radius: 50px;
+padding: 5px 10px;
+background-color: #006bcf;
+
+
+}
+.form-inline  .btn i {
+    color :white;
+}
+.contact__button button {
+border-radius: 6px;
+background-color:  #006bcf;
+border: 2px solid white;
+}
+/* tbody #getInfo {
+display: none;
+}  */
+/* tbody #getInfo td input {
+width: 100%;
+} */
