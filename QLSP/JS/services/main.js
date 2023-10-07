@@ -1,11 +1,13 @@
 //DanhSachSanPham
 var api = new CallApi();
+var products = [];
 
 function getListProduct() {
   var promise = api.fectchData();
   promise
     .then(function (result) {
-      console.log(result.data);
+      products = result.data;
+      // console.log(result.data);
       renderPR(result.data);
     })
     .catch(function (error) {
@@ -13,6 +15,26 @@ function getListProduct() {
     });
 }
 getListProduct();
+function Search() {
+  var input = document.getElementById("SearchProduct").value;
+
+  const data = products.filter((item) =>
+    item.name.toLowerCase().includes(input.toLowerCase())
+  );
+  renderPR(data);
+}
+function showAddDialog() {
+  document.getElementById("name").value = "";
+  document.getElementById("price").value = "";
+  document.getElementById("screen").value = "";
+  document.getElementById("backcamera").value = "";
+  document.getElementById("frontcamera").value = "";
+  document.getElementById("picture").value = "";
+  document.getElementById("desc").value = "";
+  document.getElementById("type").value = "";
+  var buttonEdit = document.querySelector(".modal-footer");
+  buttonEdit.innerHTML = `<button type="button" class="btn btn-primary" onclick="getInfoProduct()" id="btnAdd">Add</button>`;
+}
 
 function renderPR(data) {
   var table = document.querySelector(".DanhSachSanPham");
@@ -33,13 +55,14 @@ function renderPR(data) {
       </td>
       <td>${product.desc}</td>
       <td>${product.type}</td>
-      <td>
-        <button onlick="editProduct(${
+      <td> 
+       
+        <button onclick="editProduct(${
           product.id
-        })"><i class ="fa fa-pencil" ></i></button>  
+        })" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent;"><i class ="fa fa-pencil" ></i></button> 
         <button onclick="deleteProduct(${
           product.id
-        })"><i class="fa-solid fa-trash"></i>
+        })" style="border:none ; background-color:transparent;"><i class="fa-solid fa-trash"></i>
         </button>
       </td>
       </tr>
@@ -90,7 +113,6 @@ function getInfoProduct() {
     Info.desc,
     Info.type
   );
-  console.log(product);
   addProduct(product);
 }
 function addProduct(data) {
@@ -99,6 +121,7 @@ function addProduct(data) {
     .then(function (data) {
       console.log(data);
       getListProduct();
+      NotiAlert("success", "Them thanh cong", 2000);
     })
     .catch(function (error) {
       console.log(error);
@@ -109,6 +132,66 @@ function deleteProduct(id) {
   promise
     .then(function () {
       getListProduct();
+      NotiAlert("error", "Xoa thanh cong", 2000);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+function infoEdit(product) {
+  document.getElementById("name").value = product.name;
+  document.getElementById("price").value = product.price;
+  document.getElementById("screen").value = product.screen;
+  document.getElementById("backcamera").value = product.backCamera;
+  document.getElementById("frontcamera").value = product.frontCamera;
+  document.getElementById("picture").value = product.img;
+  document.getElementById("desc").value = product.desc;
+  document.getElementById("type").value = product.type;
+  var modalTitle = document.querySelector(".modal-title");
+  modalTitle.innerHTML = "Edit product ";
+  var buttonEdit = document.querySelector(".modal-footer");
+  buttonEdit.innerHTML = `<button class="btn btn-danger" onclick="updateProduct(${product.id})" >Update edit</button>`;
+}
+//
+function editProduct(id) {
+  var promise = api.getProduct(id);
+  promise
+    .then(function (result) {
+      infoEdit(result.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+function updateProduct(id) {
+  var name = document.getElementById("name").value;
+  var price = document.getElementById("price").value;
+  var screen = document.getElementById("screen").value;
+  var backCamera = document.getElementById("backcamera").value;
+  var frontCamera = document.getElementById("frontcamera").value;
+  var img = document.getElementById("picture").value;
+  var desc = document.getElementById("desc").value;
+  var type = document.getElementById("type").value;
+
+  var product = new Product(
+    "",
+    name,
+    price,
+    screen,
+    backCamera,
+    frontCamera,
+    img,
+    desc,
+    type
+  );
+  console.log(product);
+
+  var promise = api.editProduct(id, product);
+  promise
+    .then(function () {
+      getListProduct();
+      NotiAlert("success", "ThanhCong", 1000);
+      document.getElementById("close").click();
     })
     .catch(function (error) {
       console.log(error);

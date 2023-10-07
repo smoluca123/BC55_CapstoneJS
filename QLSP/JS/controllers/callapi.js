@@ -22,18 +22,26 @@ function CallApi() {
     });
     return promise;
   };
-  this.deleteProduct = function (id) {
+  this.deleteProduct = function (id, data) {
     return axios({
       url:
         "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs/" + id,
       method: "DELETE",
     });
   };
-  this.editProduct = function (id) {
+  this.getProduct = function (id) {
+    return axios({
+      url:
+        "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs/" + id,
+      method: "GET",
+    });
+  };
+  this.editProduct = function (id, data) {
     var promise = axios({
       url:
-        "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs/id" + id,
+        "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs/" + id,
       method: "PUT",
+      data: data,
     });
     return promise;
   };
