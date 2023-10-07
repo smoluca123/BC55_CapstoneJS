@@ -1,75 +1,83 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Product Management</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<head>
+  <title>Product Management</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Font Awsome -->
-    <!-- <link rel="stylesheet" href="./assets/css/fontawsomepro_all.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- my style   -->
-<link rel="stylesheet" href="./css/style.css">
-  </head>
-  <body>
-    
-    <header>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awsome -->
+  <!-- <link rel="stylesheet" href="./assets/css/fontawsomepro_all.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- my style   -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <header>
     <div class="container-fluid">
-        <nav class="navbar navbar-light bg-light justify-content-between">
-           
-                <a class="navbar-brand" href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i>  Product Management</a>
-            
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-          </nav>
-    </div>
-    </header>
-    <br>
-    <br>
-    <br>
-    <section>
-    <div class="container-fluid">
-    <p class="timkiemsanpham">
-        <b>Search SmartPhone:   </b>
-    </p>
-    <input onInput="Search()" type="text" placeholder="Nhập tên sản phẩm cần tìm :" class="form-control" id="SearchProduct">
-    <br>
-    <h3>Chức năng chính</h3>
-    <div class="contact__button">
-    <button class="btn btn-danger" id="btn-Info" data-toggle="modal" data-target="#exampleModalCenter" onclick="showAddDialog()"> Thêm sản phẩm</button>
-    <button class="btn btn-danger">Lọc dữ liệu </button>
-    <button class="btn btn-danger">Xuất </button>
-    <button class="btn btn-danger"><a href="https://bc-55-capstone-js.vercel.app/" style="color:white; " id="quaylai">Quay lại website</a></button>
+      <nav class="navbar navbar-light bg-light justify-content-between">
 
+        <a class="navbar-brand" href="#"> <i class="fa fa-user-circle" aria-hidden="true"></i> Product Management</a>
+
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </nav>
     </div>
-    <br>
-    <div class="table__title">
-     <table class="table table-bordered">
-      <thead>
-    <tr id="row1">
-<th>ID</th>
-<th>Name product</th>
-<th>Price</th>
-<th>Screen</th>
-<th>BackCamera</th>
-<th>FrontCamera</th>
-<th>Picture product</th>
-<th>Desc</th>
-<th>Type</th>
-<th>Action</th>
-    </tr>
-  </thead>
-<tbody class="DanhSachSanPham">
-    <!--<tr>
+  </header>
+  <br>
+  <br>
+  <br>
+  <section>
+    <div class="container-fluid">
+      <p class="timkiemsanpham">
+        <b>Search SmartPhone: </b>
+      </p>
+      <input onInput="Search()" type="text" placeholder="Nhập tên sản phẩm cần tìm :" class="form-control"
+        id="SearchProduct">
+      <br>
+      <h3>Chức năng chính</h3>
+      <div class="contact__button">
+        <button class="btn btn-danger" id="btn-Info" data-toggle="modal" data-target="#exampleModalCenter"
+          onclick="showAddDialog()"> Thêm sản phẩm</button>
+        <button class="btn btn-danger">Lọc dữ liệu </button>
+        <button class="btn btn-danger">Xuất </button>
+        <button class="btn btn-danger"><a href="https://bc-55-capstone-js.vercel.app/" style="color:white; "
+            id="quaylai">Quay lại website</a></button>
+
+      </div>
+      <br>
+      <div class="table__title">
+        <table class="table table-bordered">
+          <thead>
+            <tr id="row1">
+              <th>ID</th>
+              <th>Name product</th>
+              <th>Price</th>
+              <th>Screen</th>
+              <th>BackCamera</th>
+              <th>FrontCamera</th>
+              <th>Picture product</th>
+              <th>Desc</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="DanhSachSanPham">
+            <!--<tr>
         <td>1</td>
         <td>iphoneX	</td>
         <td>1000$</td>
@@ -84,94 +92,105 @@
 </tr>
 -->
 
-</tbody>
-</table>   
-    </div>
-    </div>
-    </section>
-      <!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Infomation product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" id="close">&times;</span>
-        </button>
+          </tbody>
+        </table>
       </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <input type="text" class="form-control"id="name" name="name" placeholder="Name"> 
-          <br>
-          <span id="tb-name"></span>
+    </div>
+  </section>
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Infomation product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" id="close">&times;</span>
+          </button>
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="price" name="price" placeholder="Price">
-        <br>
-          <span id="tb-price"></span>
-        </div>
-     
-        <div class="form-group">
-          <input type="text" class="form-control"id="screen" name="screen" placeholder="Screen">
-          <br>
-          <span id="tb-screen"></span>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="backcamera" name="backcamera" placeholder="BackCamera">
-          <br>
-          <span id="tb-backcamera"></span>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="frontcamera" name="frontcamera" placeholder="FrontCamera">
-        <br>
-          <span id="tb-frontcamera"></span>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="picture" name="picture" placeholder="Picture">
-        <br>
-          <span id="tb-picture"></span>
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="desc" name="desc" placeholder="Desc">
-        <br>
-          <span id="tb-desc"></span>
-        </div>
-        <div class="form-group">
-          <!-- <input type="text" class="form-control"id="type" name="type" placeholder="Type"> -->
-          <select class="form-control" name="type" id="type">
-            <option value="">Loại sản phẩm</option>
-            <option value="Iphone">Iphone</option>
-            <option value="Samsung">Samsung</option>
-          </select>
-          <br>
-          <span id="tb-type"></span>
-        </div>
-        <!-- <div class="form-group">
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            <br>
+            <span id="tb-name"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+            <br>
+            <span id="tb-price"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="screen" name="screen" placeholder="Screen">
+            <br>
+            <span id="tb-screen"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="backcamera" name="backcamera" placeholder="BackCamera">
+            <br>
+            <span id="tb-backcamera"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="frontcamera" name="frontcamera" placeholder="FrontCamera">
+            <br>
+            <span id="tb-frontcamera"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="picture" name="picture" placeholder="Picture">
+            <img style="margin-top:10px" width="100%" id="picture-preview" src="" alt="">
+            <br>
+            <span id="tb-picture"></span>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="desc" name="desc" placeholder="Desc">
+            <br>
+            <span id="tb-desc"></span>
+          </div>
+          <div class="form-group">
+            <!-- <input type="text" class="form-control"id="type" name="type" placeholder="Type"> -->
+            <select class="form-control" name="type" id="type">
+              <option value="">Loại sản phẩm</option>
+              <option value="Iphone">Iphone</option>
+              <option value="Samsung">Samsung</option>
+            </select>
+            <br>
+            <span id="tb-type"></span>
+          </div>
+          <!-- <div class="form-group">
           <button class=åå"btn btn-success"><i class="fa-solid fa-plus"></i> </button>
         </div> -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" onclick="getInfoProduct()" id="btnAdd">Add</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="getInfoProduct()" id="btnAdd">Add</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js" integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <!-- <script src="./JS_layout/style.js"></script>  -->
-   <script src="./JS/controllers/callapi.js"></script>
-    <script src="./JS/models/product.js"></script>
-    <script src="./JS/Validate_JS/validate.js"></script>
-    <script src="./JS/services/main.js"></script> 
-   
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
+    integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- <script src="./JS_layout/style.js"></script>  -->
+  <script src="./JS/controllers/callapi.js"></script>
+  <script src="./JS/models/product.js"></script>
+  <script src="./JS/Validate_JS/validate.js"></script>
+  <script src="./JS/services/main.js"></script>
 
-  </body>
+
+</body>
+
 </html>

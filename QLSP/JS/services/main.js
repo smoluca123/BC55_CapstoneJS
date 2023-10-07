@@ -16,7 +16,7 @@ function getListProduct() {
 }
 getListProduct();
 function Search() {
-  var input = document.getElementById("SearchProduct").value;
+  var input = document.getElementById('SearchProduct').value;
 
   const data = products.filter((item) =>
     item.name.toLowerCase().includes(input.toLowerCase())
@@ -24,21 +24,21 @@ function Search() {
   renderPR(data);
 }
 function showAddDialog() {
-  document.getElementById("name").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("screen").value = "";
-  document.getElementById("backcamera").value = "";
-  document.getElementById("frontcamera").value = "";
-  document.getElementById("picture").value = "";
-  document.getElementById("desc").value = "";
-  document.getElementById("type").value = "";
-  var buttonEdit = document.querySelector(".modal-footer");
+  document.getElementById('name').value = '';
+  document.getElementById('price').value = '';
+  document.getElementById('screen').value = '';
+  document.getElementById('backcamera').value = '';
+  document.getElementById('frontcamera').value = '';
+  document.getElementById('picture').value = '';
+  document.getElementById('desc').value = '';
+  document.getElementById('type').value = '';
+  var buttonEdit = document.querySelector('.modal-footer');
   buttonEdit.innerHTML = `<button type="button" class="btn btn-primary" onclick="getInfoProduct()" id="btnAdd">Add</button>`;
 }
 
 function renderPR(data) {
-  var table = document.querySelector(".DanhSachSanPham");
-  var content = "";
+  var table = document.querySelector('.DanhSachSanPham');
+  var content = '';
 
   for (var i = 0; i < data.length; i++) {
     var product = data[i];
@@ -71,36 +71,36 @@ function renderPR(data) {
   table.innerHTML = content;
 }
 function getValueInput() {
-  var name = document.getElementById("name").value;
-  var price = document.getElementById("price").value;
-  var screen = document.getElementById("screen").value;
-  var backCamera = document.getElementById("backcamera").value;
-  var frontCamera = document.getElementById("frontcamera").value;
-  var img = document.getElementById("picture").value;
-  var desc = document.getElementById("desc").value;
-  var type = document.getElementById("type").value;
+  var name = document.getElementById('name').value;
+  var price = document.getElementById('price').value;
+  var screen = document.getElementById('screen').value;
+  var backCamera = document.getElementById('backcamera').value;
+  var frontCamera = document.getElementById('frontcamera').value;
+  var img = document.getElementById('picture').value;
+  var desc = document.getElementById('desc').value;
+  var type = document.getElementById('type').value;
   //validate
   var isvalid = true;
-  isvalid &= kiemTraRong(name, "tb-name", "Vui lòng không bỏ trống");
-  isvalid &= kiemTraRong(screen, "tb-screen", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(name, 'tb-name', 'Vui lòng không bỏ trống');
+  isvalid &= kiemTraRong(screen, 'tb-screen', 'Vui lòng không bỏ trống');
   isvalid &= kiemTraRong(
     backCamera,
-    "tb-backcamera",
-    "Vui lòng không bỏ trống"
+    'tb-backcamera',
+    'Vui lòng không bỏ trống'
   );
   isvalid &= kiemTraRong(
     frontCamera,
-    "tb-frontcamera",
-    "Vui lòng không bỏ trống"
+    'tb-frontcamera',
+    'Vui lòng không bỏ trống'
   );
-  isvalid &= kiemTraRong(img, "tb-picture", "Vui lòng không bỏ trống");
-  isvalid &= kiemTraRong(desc, "tb-desc", "Vui lòng không bỏ trống");
-  isvalid &= kiemTraRong(type, "tb-type", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(img, 'tb-picture', 'Vui lòng không bỏ trống');
+  isvalid &= kiemTraRong(desc, 'tb-desc', 'Vui lòng không bỏ trống');
+  isvalid &= kiemTraRong(type, 'tb-type', 'Vui lòng không bỏ trống');
   isvalid &= kiemTraSo(
     price,
-    "tb-price",
-    "Không đúng định dạng vui lòng nhập số ",
-    "Vui lòng không bỏ trống"
+    'tb-price',
+    'Không đúng định dạng vui lòng nhập số ',
+    'Vui lòng không bỏ trống'
   );
   if (!isvalid) {
     return null;
@@ -119,7 +119,7 @@ function getValueInput() {
 }
 function NotiAlert(icon, title, timer) {
   Swal.fire({
-    position: "center",
+    position: 'center',
     icon: icon,
     title: title,
     showConfirmButton: false,
@@ -129,7 +129,7 @@ function NotiAlert(icon, title, timer) {
 function getInfoProduct() {
   var Info = getValueInput();
   var product = new Product(
-    "",
+    '',
     Info.name,
     Info.price,
     Info.screen,
@@ -150,7 +150,7 @@ function addProduct(data) {
       var checkValidate = getValueInput();
       if (checkValidate) {
         getListProduct(checkValidate);
-        NotiAlert("success", "Them thanh cong", 2000);
+        NotiAlert('success', 'Them thanh cong', 2000);
       }
     })
     .catch(function (error) {
@@ -162,24 +162,25 @@ function deleteProduct(id) {
   promise
     .then(function () {
       getListProduct();
-      NotiAlert("error", "Xoa thanh cong", 2000);
+      NotiAlert('error', 'Xoa thanh cong', 2000);
     })
     .catch(function (error) {
       console.log(error);
     });
 }
 function infoEdit(product) {
-  document.getElementById("name").value = product.name;
-  document.getElementById("price").value = product.price;
-  document.getElementById("screen").value = product.screen;
-  document.getElementById("backcamera").value = product.backCamera;
-  document.getElementById("frontcamera").value = product.frontCamera;
-  document.getElementById("picture").value = product.img;
-  document.getElementById("desc").value = product.desc;
-  document.getElementById("type").value = product.type;
-  var modalTitle = document.querySelector(".modal-title");
-  modalTitle.innerHTML = "Edit product ";
-  var buttonEdit = document.querySelector(".modal-footer");
+  document.getElementById('name').value = product.name;
+  document.getElementById('price').value = product.price;
+  document.getElementById('screen').value = product.screen;
+  document.getElementById('backcamera').value = product.backCamera;
+  document.getElementById('frontcamera').value = product.frontCamera;
+  document.getElementById('picture').value = product.img;
+  document.getElementById('desc').value = product.desc;
+  document.getElementById('type').value = product.type;
+  imgPreview();
+  var modalTitle = document.querySelector('.modal-title');
+  modalTitle.innerHTML = 'Edit product ';
+  var buttonEdit = document.querySelector('.modal-footer');
   buttonEdit.innerHTML = `<button class="btn btn-danger" onclick="updateProduct(${product.id})" >Update edit</button>`;
 }
 //
@@ -194,17 +195,17 @@ function editProduct(id) {
     });
 }
 function updateProduct(id) {
-  var name = document.getElementById("name").value;
-  var price = document.getElementById("price").value;
-  var screen = document.getElementById("screen").value;
-  var backCamera = document.getElementById("backcamera").value;
-  var frontCamera = document.getElementById("frontcamera").value;
-  var img = document.getElementById("picture").value;
-  var desc = document.getElementById("desc").value;
-  var type = document.getElementById("type").value;
+  var name = document.getElementById('name').value;
+  var price = document.getElementById('price').value;
+  var screen = document.getElementById('screen').value;
+  var backCamera = document.getElementById('backcamera').value;
+  var frontCamera = document.getElementById('frontcamera').value;
+  var img = document.getElementById('picture').value;
+  var desc = document.getElementById('desc').value;
+  var type = document.getElementById('type').value;
 
   var product = new Product(
-    "",
+    '',
     name,
     price,
     screen,
@@ -222,11 +223,18 @@ function updateProduct(id) {
       var checkValidate = getValueInput();
       if (checkValidate) {
         getListProduct(checkValidate);
-        NotiAlert("success", "ThanhCong", 1000);
-        document.getElementById("close").click();
+        NotiAlert('success', 'ThanhCong', 1000);
+        document.getElementById('close').click();
       }
     })
     .catch(function (error) {
       console.log(error);
     });
 }
+
+function imgPreview() {
+  var src = document.querySelector('#picture').value;
+  document.querySelector('#picture-preview').src = src;
+}
+
+document.querySelector('#picture').oninput = imgPreview();
