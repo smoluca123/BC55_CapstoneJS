@@ -237,4 +237,4 @@ function imgPreview() {
   document.querySelector('#picture-preview').src = src;
 }
 
-document.querySelector('#picture').oninput = imgPreview();
+document.querySelector('#picture').oninput = imgPreview;
