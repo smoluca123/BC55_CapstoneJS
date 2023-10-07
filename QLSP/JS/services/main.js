@@ -62,7 +62,7 @@ function renderPR(data) {
         })" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent; padding-left:5px;"><i class ="fa fa-pencil" ></i></button> 
         <button onclick="deleteProduct(${
           product.id
-        })" style="border:none ; background-color:transparent;"><i class="fa-solid fa-trash"></i>
+        })" style="border:none ; background-color:transparent; padding-left:5px"><i class="fa-solid fa-trash"></i>
         </button>
       </td>
       </tr>
@@ -230,3 +230,4 @@ function updateProduct(id) {
       console.log(error);
     });
 }
+//sapxep
