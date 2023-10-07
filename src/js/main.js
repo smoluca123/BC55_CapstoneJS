@@ -22,7 +22,7 @@ function renderProduct(products) {
   var samsungItem = '';
 
   products.map((item) => {
-    if (item.type === 'iphone') {
+    if (item.type === 'Iphone') {
       iphoneItem += `
         <div class="product">
             <div class="product-img">
