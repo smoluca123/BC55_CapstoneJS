@@ -41,7 +41,18 @@ display: none;
 /* tbody #getInfo td input {
 width: 100%;
 } */
-button  i {
+button i {
 border: none;
 }
 
+#quaylai {
+text-decoration: none;
+}
+.modal .modal-content .modal-body span {
+    color: red;
+}
+.modal-header #exampleModalLongTitle {
+padding-left:100px;
+font-size: 30px;
+
+}

@@ -8,7 +8,7 @@ function getListProduct() {
     .then(function (result) {
       products = result.data;
       // console.log(result.data);
-      renderPR(result.data);
+      renderPR(products);
     })
     .catch(function (error) {
       console.log(error);
@@ -51,7 +51,7 @@ function renderPR(data) {
       <td>${product.backCamera}</td>
       <td>${product.frontCamera}</td>
       <td>
-      <img src="${product.img}" alt="" width="50px">
+      <img src="${product.img}" alt="" width="50px" height="50px">
       </td>
       <td>${product.desc}</td>
       <td>${product.type}</td>
@@ -59,7 +59,7 @@ function renderPR(data) {
        
         <button onclick="editProduct(${
           product.id
-        })" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent;"><i class ="fa fa-pencil" ></i></button> 
+        })" data-toggle="modal" data-target="#exampleModalCenter" style="border:none; background-color:transparent; padding-left:5px;"><i class ="fa fa-pencil" ></i></button> 
         <button onclick="deleteProduct(${
           product.id
         })" style="border:none ; background-color:transparent;"><i class="fa-solid fa-trash"></i>
@@ -79,6 +79,32 @@ function getValueInput() {
   var img = document.getElementById("picture").value;
   var desc = document.getElementById("desc").value;
   var type = document.getElementById("type").value;
+  //validate
+  var isvalid = true;
+  isvalid &= kiemTraRong(name, "tb-name", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(screen, "tb-screen", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(
+    backCamera,
+    "tb-backcamera",
+    "Vui lòng không bỏ trống"
+  );
+  isvalid &= kiemTraRong(
+    frontCamera,
+    "tb-frontcamera",
+    "Vui lòng không bỏ trống"
+  );
+  isvalid &= kiemTraRong(img, "tb-picture", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(desc, "tb-desc", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraRong(type, "tb-type", "Vui lòng không bỏ trống");
+  isvalid &= kiemTraSo(
+    price,
+    "tb-price",
+    "Không đúng định dạng vui lòng nhập số ",
+    "Vui lòng không bỏ trống"
+  );
+  if (!isvalid) {
+    return null;
+  }
   var InfoValue = {
     name: name,
     price: price,
@@ -117,11 +143,15 @@ function getInfoProduct() {
 }
 function addProduct(data) {
   var promise = api.addProduct(data);
+
   promise
     .then(function (data) {
       console.log(data);
-      getListProduct();
-      NotiAlert("success", "Them thanh cong", 2000);
+      var checkValidate = getValueInput();
+      if (checkValidate) {
+        getListProduct(checkValidate);
+        NotiAlert("success", "Them thanh cong", 2000);
+      }
     })
     .catch(function (error) {
       console.log(error);
@@ -189,9 +219,12 @@ function updateProduct(id) {
   var promise = api.editProduct(id, product);
   promise
     .then(function () {
-      getListProduct();
-      NotiAlert("success", "ThanhCong", 1000);
-      document.getElementById("close").click();
+      var checkValidate = getValueInput();
+      if (checkValidate) {
+        getListProduct(checkValidate);
+        NotiAlert("success", "ThanhCong", 1000);
+        document.getElementById("close").click();
+      }
     })
     .catch(function (error) {
       console.log(error);
