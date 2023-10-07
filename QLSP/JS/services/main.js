@@ -177,6 +177,7 @@ function infoEdit(product) {
   document.getElementById('picture').value = product.img;
   document.getElementById('desc').value = product.desc;
   document.getElementById('type').value = product.type;
+  imgPreview();
   var modalTitle = document.querySelector('.modal-title');
   modalTitle.innerHTML = 'Edit product ';
   var buttonEdit = document.querySelector('.modal-footer');
@@ -231,7 +232,9 @@ function updateProduct(id) {
     });
 }
 
-document.querySelector('#picture').oninput = function () {
+function imgPreview() {
   var src = document.querySelector('#picture').value;
   document.querySelector('#picture-preview').src = src;
-};
+}
+
+document.querySelector('#picture').oninput = imgPreview();
