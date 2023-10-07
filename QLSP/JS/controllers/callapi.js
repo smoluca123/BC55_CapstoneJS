@@ -22,7 +22,7 @@ function CallApi() {
     });
     return promise;
   };
-  this.deleteProduct = function (id, data) {
+  this.deleteProduct = function (id) {
     return axios({
       url:
         "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs/" + id,
