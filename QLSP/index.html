@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Product Management</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,6 +48,7 @@
     <button class="btn btn-danger" id="btn-Info" data-toggle="modal" data-target="#exampleModalCenter" onclick="showAddDialog()"> Thêm sản phẩm</button>
     <button class="btn btn-danger">Lọc dữ liệu </button>
     <button class="btn btn-danger">Xuất </button>
+    <button class="btn btn-danger"><a href="https://bc-55-capstone-js.vercel.app/" style="color:white; " id="quaylai">Quay lại website</a></button>
 
     </div>
     <br>
@@ -96,31 +97,47 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Infomation product</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" id="close">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <input type="text" class="form-control"id="name" name="name" placeholder="Name"> </div>
-        <div class="form-group">
-          <input type="text" class="form-control"id="price" name="price" placeholder="Price">
+          <input type="text" class="form-control"id="name" name="name" placeholder="Name"> 
+          <br>
+          <span id="tb-name"></span>
         </div>
         <div class="form-group">
+          <input type="text" class="form-control"id="price" name="price" placeholder="Price">
+        <br>
+          <span id="tb-price"></span>
+        </div>
+     
+        <div class="form-group">
           <input type="text" class="form-control"id="screen" name="screen" placeholder="Screen">
+          <br>
+          <span id="tb-screen"></span>
         </div>
         <div class="form-group">
           <input type="text" class="form-control"id="backcamera" name="backcamera" placeholder="BackCamera">
+          <br>
+          <span id="tb-backcamera"></span>
         </div>
         <div class="form-group">
           <input type="text" class="form-control"id="frontcamera" name="frontcamera" placeholder="FrontCamera">
+        <br>
+          <span id="tb-frontcamera"></span>
         </div>
         <div class="form-group">
           <input type="text" class="form-control"id="picture" name="picture" placeholder="Picture">
+        <br>
+          <span id="tb-picture"></span>
         </div>
         <div class="form-group">
           <input type="text" class="form-control"id="desc" name="desc" placeholder="Desc">
+        <br>
+          <span id="tb-desc"></span>
         </div>
         <div class="form-group">
           <!-- <input type="text" class="form-control"id="type" name="type" placeholder="Type"> -->
@@ -129,6 +146,8 @@
             <option value="Iphone">Iphone</option>
             <option value="Samsung">Samsung</option>
           </select>
+          <br>
+          <span id="tb-type"></span>
         </div>
         <!-- <div class="form-group">
           <button class=åå"btn btn-success"><i class="fa-solid fa-plus"></i> </button>
@@ -150,6 +169,7 @@
    <!-- <script src="./JS_layout/style.js"></script>  -->
    <script src="./JS/controllers/callapi.js"></script>
     <script src="./JS/models/product.js"></script>
+    <script src="./JS/Validate_JS/validate.js"></script>
     <script src="./JS/services/main.js"></script> 
    
 
