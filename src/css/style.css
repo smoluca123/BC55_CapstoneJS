@@ -1,0 +1,14 @@
+.list_products>.tab-pane {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.list_products .product {
+    margin: 15px 2px;
+}
+
+.product .product-img {
+    min-height: 295px;
+    max-height: 295px;
+}

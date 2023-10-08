@@ -11,7 +11,8 @@ function getProduct() {
   promise
     .then(function (response) {
       products.listProduct = response.data;
-      renderProduct(products.listProduct);
+      renderNewProduct(products.listProduct);
+      renderListProduct(products.listProduct);
       addSlick();
     })
     .catch(function (error) {
@@ -19,12 +20,13 @@ function getProduct() {
     });
 }
 
-function renderProduct(products) {
+function renderNewProduct(products) {
   var iphoneItem = [];
   var samsungItem = [];
   var itemString = '';
-  products.map((item) => {
-    var priceFormat = (itemString = `
+  var newProduct = products.slice(-10);
+  newProduct.map((item) => {
+    itemString = `
       <div class="product">
           <div class="product-img">
               <img src="${item.img}" alt="">
@@ -64,7 +66,7 @@ function renderProduct(products) {
                   cart</button>
           </div>
       </div>
-      `);
+      `;
     if (item.type === 'Iphone') {
       iphoneItem.push(itemString);
     } else {
@@ -74,6 +76,63 @@ function renderProduct(products) {
     $a('#iphonetab .products-slick').innerHTML = iphoneItem.join('');
     $a('#samsungtab .products-slick').innerHTML = samsungItem.join('');
   });
+}
+function renderListProduct(products) {
+  var iphoneItem = [];
+  var samsungItem = [];
+  var itemString = '';
+  var newProduct = products.slice(-10);
+  newProduct.map((item) => {
+    itemString = `
+      <div class="product">
+          <div class="product-img">
+              <img src="${item.img}" alt="">
+              <div class="product-label">
+                  <span class="sale">-30%</span>
+                  <span class="new">NEW</span>
+              </div>
+          </div>
+          <div class="product-body">
+              <p class="product-category">Category</p>
+              <h3 class="product-name"><a href="#">${item.name}</a></h3>
+              <h4 class="product-price">${formatUSD(item.price)} <del
+                      class="product-old-price">${formatUSD(
+                        item.price * 1.4
+                      )}</del></h4>
+              <div class="product-rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+              </div>
+              <div class="product-btns">
+                  <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span
+                          class="tooltipp">add to wishlist</span></button>
+                  <button class="add-to-compare"><i class="fa fa-exchange"></i><span
+                          class="tooltipp">add to compare</span></button>
+                  <button class="quick-view" data-toggle="modal"
+                  data-target="#exampleModal" onclick="detailProduct(${
+                    item.id
+                  })"><i class="fa fa-eye"></i><span
+                          class="tooltipp">quick view</span></button>
+              </div>
+          </div>
+          <div class="add-to-cart">
+              <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+                  cart</button>
+          </div>
+      </div>
+      `;
+
+    if (item.type === 'Iphone') {
+      iphoneItem.push(itemString);
+    } else {
+      samsungItem.push(itemString);
+    }
+  });
+  $a('#listIphoneTab').innerHTML = iphoneItem.join('');
+  $a('#listSamsungTab').innerHTML = samsungItem.join('');
 }
 
 function detailProduct(id) {
