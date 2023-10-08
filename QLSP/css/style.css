@@ -56,3 +56,18 @@ padding-left:100px;
 font-size: 30px;
 
 }
+#SapXep {
+width: 20px;
+height: 20px;
+
+}
+#DoanThang {
+    display: flex;
+    align-items: center;
+}
+#SapXep {
+margin-left: 10px;
+}
+#DoanThang p {
+margin-bottom:  0 ;
+}
