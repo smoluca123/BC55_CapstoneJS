@@ -57,6 +57,7 @@
         <button class="btn btn-danger">Xuất </button>
         <button class="btn btn-danger"><a href="https://bc-55-capstone-js.vercel.app/" style="color:white; "
             id="quaylai">Quay lại website</a></button>
+            <button class="btn btn-danger" onclick="logOut()">Đăng xuất</button>
 
     </div>
     <br>
@@ -66,11 +67,12 @@
     <tr id="row1">
 <th>ID</th>
 <th>Name product</th>
-<th > <div id="DoanThang"><p>Price</p>  <select name="type" id="SapXep">
+<th > <div id="DoanThang"><p>Price</p>  
+  <select name="type" id="SapXep" onchange="sortProduct()">
   <option value=""> Chọn sắp xếp </option>
   <option value="Tang">Sắp xếp tăng </option>
   <option value="Giam">sắp xếp giảm</option>
-</select ></div></th>
+</select ></div></th> 
 <th>Screen</th>
 <th>BackCamera</th>
 <th>FrontCamera</th>
@@ -195,7 +197,37 @@
   <script src="./JS/Validate_JS/validate.js"></script>
   <script src="./JS/services/main.js"></script>
 
-
+  <script>
+    if (!localStorage.getItem("login")) {
+      window.location = "./login.html";
+    }
+    function logOut() {
+      localStorage.clear("login");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Success",
+        showConfirmButton: false,
+        timer: 1000,
+      });
+      setTimeout(function () {
+        window.location= "./login.html";
+      }, 1000);
+    }
+    
+      function alerInfo(){
+        
+       Swal.fire({
+          title: 'Setting update!',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          }
+        })} 
+  ///hello moi nguoi 
+  </script>
 </body>
 
 </html>
