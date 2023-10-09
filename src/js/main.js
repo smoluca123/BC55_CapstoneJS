@@ -315,16 +315,8 @@ function formatUSD(n) {
 
 function addAnimatedCart() {
   var cartEle = $a('.dropdown-toggle i');
-  cartEle.classList.remove(
-    'animate__animated',
-    'animate__rubberBand',
-    'animate__faster'
-  );
+  cartEle.classList.remove('animate__rubberBand');
   setTimeout(() => {
-    cartEle.classList.add(
-      'animate__animated',
-      'animate__rubberBand',
-      'animate__faster'
-    );
+    cartEle.classList.add('animate__rubberBand');
   }, 1);
 }
