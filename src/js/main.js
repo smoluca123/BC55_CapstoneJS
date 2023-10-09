@@ -172,6 +172,7 @@ function renderCartItem(cart) {
   $a('.cart-summary span').innerHTML = cart.totalQuantity;
   $a('.cart-summary .subtotal').innerHTML = formatUSD(cart.totalPrice);
   $a('.cart-qty').innerHTML = cart.totalQuantity;
+  addAnimatedCart();
 }
 
 function detailProduct(id) {
@@ -310,4 +311,20 @@ function formatUSD(n) {
     currency: 'USD',
   }).format(Math.floor(n));
   return numFormat.slice(0, numFormat.length - 3); //bỏ 3 kí tự .00
+}
+
+function addAnimatedCart() {
+  var cartEle = $a('.dropdown-toggle i');
+  cartEle.classList.remove(
+    'animate__animated',
+    'animate__rubberBand',
+    'animate__faster'
+  );
+  setTimeout(() => {
+    cartEle.classList.add(
+      'animate__animated',
+      'animate__rubberBand',
+      'animate__faster'
+    );
+  }, 1);
 }
