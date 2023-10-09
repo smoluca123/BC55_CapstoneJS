@@ -195,10 +195,6 @@ function detailProduct(id) {
 }
 
 function addProductToCart(id, qty = 1) {
-  if (!qty) {
-    return;
-  }
-
   var product = products.getProductByID(id);
   var cartItem = { product, quantity: qty };
   if (!cart.listProduct.find((item) => item.product.id == id)) {
@@ -228,7 +224,6 @@ function clearCart() {
 }
 
 function changeQty(id, n) {
-  console.log(n);
   var index = cart.listProduct.findIndex((item) => item.product.id == id);
   cart.listProduct[index].quantity += n;
   cart.tinhTotalPrice();
