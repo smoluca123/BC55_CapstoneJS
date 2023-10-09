@@ -5,6 +5,7 @@ const apiUrl = 'https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/capstonejs';
 const api = new callApi();
 
 var products = new ListProduct();
+var cart = new Cart();
 
 function getProduct() {
   const promise = api.fetchData(apiUrl);
@@ -62,7 +63,9 @@ function renderNewProduct(products) {
               </div>
           </div>
           <div class="add-to-cart">
-              <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+              <button class="add-to-cart-btn" onclick="addProductToCart(${
+                item.id
+              })"><i class="fa fa-shopping-cart"></i> add to
                   cart</button>
           </div>
       </div>
@@ -119,7 +122,9 @@ function renderListProduct(products) {
               </div>
           </div>
           <div class="add-to-cart">
-              <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to
+              <button class="add-to-cart-btn" onclick="addProductToCart(${
+                item.id
+              })"><i class="fa fa-shopping-cart"></i> add to
                   cart</button>
           </div>
       </div>
@@ -135,18 +140,99 @@ function renderListProduct(products) {
   $a('#listSamsungTab').innerHTML = samsungItem.join('');
 }
 
+function renderCartItem(cart) {
+  var content = '';
+  cart.listProduct.map((item) => {
+    var itemString = `
+    <div class="product-widget">
+      <div class="product-img">
+        <img src="${item.product.img}" alt="">
+      </div>
+      <div class="product-body">
+        <h3 class="product-name"><a href="#">${item.product.name}</a></h3>
+        <h4 class="product-price">
+        <a class="text-danger" style="font-size : 26px" onclick="changeQty(${
+          item.product.id
+        },-1)"> - </a>
+        <span class="qty" style="margin : 0 5px">${item.quantity}x</span>
+        <a class="text-success" style="font-size : 26px" onclick="changeQty(${
+          item.product.id
+        },1)"> + </a>
+        <br>
+        Price : ${formatUSD(item.product.price)}</h4>
+      </div>
+      <button class="delete" onclick="deleteItemCart(${
+        item.product.id
+      })"><i class="fa fa-close"></i></button>
+    </div>
+    `;
+    content += itemString;
+  });
+  $a('.cart-list').innerHTML = content;
+  $a('.cart-summary span').innerHTML = cart.totalQuantity;
+  $a('.cart-summary .subtotal').innerHTML = formatUSD(cart.totalPrice);
+  $a('.cart-qty').innerHTML = cart.totalQuantity;
+}
+
 function detailProduct(id) {
   var product = products.getProductByID(id);
+  var qty = $a('.modal-qty');
   var cateString = '<li>Category:</li><li>Smartphone:</li>';
   $a('.modal-body .breadcrumb-tree li:nth-child(3)').innerHTML = product.name;
   $a('.modal-body .product-preview img').src = product.img;
   $a('.modal-body .product-name').innerHTML = product.name;
   $a('.modal-body .product-price').innerHTML = formatUSD(product.price);
   $a('.modal-body .product-desc').innerHTML = product.desc;
+  $a('.modal-body .add-to-cart .add-to-cart-btn').onclick = function () {
+    addProductToCart(id, +qty.value);
+    $a('.close').click();
+  };
 
   $a(
     '.product-links'
   ).innerHTML = `${cateString}<li><a >${product.type}</a></li>`;
+}
+
+function addProductToCart(id, qty = 1) {
+  if (!qty) {
+    return;
+  }
+
+  var product = products.getProductByID(id);
+  var cartItem = { product, quantity: qty };
+  if (!cart.listProduct.find((item) => item.product.id == id)) {
+    cart.listProduct.push(cartItem);
+  } else {
+    var index = cart.listProduct.findIndex((item) => item.product.id == id);
+    cart.listProduct[index].quantity += qty;
+  }
+  cart.tinhTotalPrice();
+  cart.tinhTotalQuantity();
+  renderCartItem(cart);
+}
+
+function deleteItemCart(id) {
+  var index = cart.listProduct.findIndex((item) => item.product.id == id);
+  cart.listProduct.splice(index, 1);
+  cart.tinhTotalPrice();
+  cart.tinhTotalQuantity();
+  renderCartItem(cart);
+}
+
+function clearCart() {
+  cart.listProduct = [];
+  cart.tinhTotalPrice();
+  cart.tinhTotalQuantity();
+  renderCartItem(cart);
+}
+
+function changeQty(id, n) {
+  console.log(n);
+  var index = cart.listProduct.findIndex((item) => item.product.id == id);
+  cart.listProduct[index].quantity += n;
+  cart.tinhTotalPrice();
+  cart.tinhTotalQuantity();
+  renderCartItem(cart);
 }
 
 getProduct();
@@ -202,9 +288,9 @@ function addSlick() {
 }
 
 function formatUSD(n) {
-  return new Intl.NumberFormat('en-US', {
+  var numFormat = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    maximumSignificantDigits: 1,
   }).format(Math.floor(n));
+  return numFormat.slice(0, numFormat.length - 3); //bỏ 3 kí tự .00
 }

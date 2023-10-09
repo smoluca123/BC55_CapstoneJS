@@ -107,11 +107,11 @@
 								<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 									<i class="fa fa-shopping-cart"></i>
 									<span>Your Cart</span>
-									<div class="qty">3</div>
+									<div class="qty cart-qty">0</div>
 								</a>
 								<div class="cart-dropdown">
 									<div class="cart-list">
-										<div class="product-widget">
+										<!-- <div class="product-widget">
 											<div class="product-img">
 												<img src="./img/product01.png" alt="">
 											</div>
@@ -131,14 +131,14 @@
 												<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
 											</div>
 											<button class="delete"><i class="fa fa-close"></i></button>
-										</div>
+										</div> -->
 									</div>
 									<div class="cart-summary">
-										<small>3 Item(s) selected</small>
-										<h5>SUBTOTAL: $2940.00</h5>
+										<small><span>3</span> Item(s) selected</small>
+										<h5>SUBTOTAL: <span class="subtotal">$2940.00</span></h5>
 									</div>
 									<div class="cart-btns">
-										<a href="#">View Cart</a>
+										<a href="#" onclick="clearCart()">Clear Cart</a>
 										<a href="#">Checkout <i class="fa fa-arrow-circle-right"></i></a>
 									</div>
 								</div>
@@ -1404,7 +1404,7 @@
 											<div class="qty-label">
 												Qty
 												<div class="input-number">
-													<input type="number">
+													<input class="modal-qty" type="number">
 													<span class="qty-up">+</span>
 													<span class="qty-down">-</span>
 												</div>
@@ -1468,6 +1468,7 @@
 	<script src="./src/models/callApi.js"></script>
 	<script src="./src/models/listProduct.js"></script>
 	<script src="./src/models/product.js"></script>
+	<script src="./src/models/cart.js"></script>
 	<script src="./src/js/main.js"></script>
 	</script>
 	<script src="./js/main.js"></script>
