@@ -205,6 +205,8 @@ function addProductToCart(id, qty = 1) {
   }
   cart.tinhTotalPrice();
   cart.tinhTotalQuantity();
+  setCartLocalStoregrade(cart.listProduct);
+
   renderCartItem(cart);
 }
 
@@ -213,6 +215,8 @@ function deleteItemCart(id) {
   cart.listProduct.splice(index, 1);
   cart.tinhTotalPrice();
   cart.tinhTotalQuantity();
+  setCartLocalStoregrade(cart.listProduct);
+
   renderCartItem(cart);
 }
 
@@ -220,6 +224,8 @@ function clearCart() {
   cart.listProduct = [];
   cart.tinhTotalPrice();
   cart.tinhTotalQuantity();
+  setCartLocalStoregrade(cart.listProduct);
+
   renderCartItem(cart);
 }
 
@@ -228,10 +234,25 @@ function changeQty(id, n) {
   cart.listProduct[index].quantity += n;
   cart.tinhTotalPrice();
   cart.tinhTotalQuantity();
+  setCartLocalStoregrade(cart.listProduct);
   renderCartItem(cart);
 }
 
+function setCartLocalStoregrade(data) {
+  localStorage.setItem('cart', JSON.stringify(data));
+}
+
+function getCartLocalStoregrade() {
+  if (localStorage.getItem('cart')) {
+    cart.listProduct = JSON.parse(localStorage.getItem('cart'));
+    cart.tinhTotalPrice();
+    cart.tinhTotalQuantity();
+    renderCartItem(cart);
+  }
+}
+
 getProduct();
+getCartLocalStoregrade();
 
 function addSlick() {
   // Products Slick
