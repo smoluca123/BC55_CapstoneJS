@@ -16,7 +16,11 @@ function Cart() {
 
     this.listProduct.map((item) => {
       if (item.quantity <= 0) {
-        item.quantity = 0;
+        var index = this.listProduct.findIndex(
+          (item2) => item2.product.id == item.product.id
+        );
+        this.listProduct.splice(index, 1);
+        return;
       }
       this.totalQuantity += item.quantity;
     });
