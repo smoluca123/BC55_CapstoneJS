@@ -177,6 +177,7 @@ function renderCartItem(cart) {
 function detailProduct(id) {
   var product = products.getProductByID(id);
   var qty = $a('.modal-qty');
+  qty.value = 1;
   var cateString = '<li>Category:</li><li>Smartphone:</li>';
   $a('.modal-body .breadcrumb-tree li:nth-child(3)').innerHTML = product.name;
   $a('.modal-body .product-preview img').src = product.img;
