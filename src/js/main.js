@@ -320,3 +320,13 @@ function addAnimatedCart() {
     cartEle.classList.add('animate__rubberBand');
   }, 1);
 }
+
+var menuToggle = $a('.toggleMenu');
+
+if (menuToggle) {
+  menuToggle.onclick = function () {
+    console.log(123);
+    $a('#responsive-nav').classList.toggle('active');
+    $a('.toggleMenu').classList.toggle('active');
+  };
+}

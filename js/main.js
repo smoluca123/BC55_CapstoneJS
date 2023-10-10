@@ -5,6 +5,7 @@
   $('.menu-toggle > a').on('click', function (e) {
     e.preventDefault();
     $('#responsive-nav').toggleClass('active');
+    $('.toggleMenu').toggleClass('active');
   });
 
   // Fix cart dropdown from closing
