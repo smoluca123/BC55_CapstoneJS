@@ -13,8 +13,8 @@ function Cart() {
   };
   this.tinhTotalQuantity = function () {
     this.totalQuantity = 0;
-
-    this.listProduct.map((item) => {
+    var newProduct = [...this.listProduct];
+    newProduct.map((item) => {
       if (item.quantity <= 0) {
         var index = this.listProduct.findIndex(
           (item2) => item2.product.id == item.product.id
