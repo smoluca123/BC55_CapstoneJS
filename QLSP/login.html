@@ -145,16 +145,16 @@
             <div class="form-group">
               <label for="email" class="form-label">Email</label>
               <input id="email" name="email" type="text" placeholder="Nhập địa chỉ Email" class="form-control">
-              <span class="form-message"></span>
+              <span class="messageEmail"></span>
             </div>
     
             <div class="form-group">
               <label for="password" class="form-label">Mật khẩu</label>
               <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
-              <span class="form-message"></span>
+              <span class="messagePassword"></span>
             </div>
     
-            <button type="button" class="form-submit" onclick="infoLogin()">Đăng nhập</button>
+            <button type="button" class="form-submit" onclick="validate()">Đăng nhập</button>
           </form>
     </div>
       
@@ -179,41 +179,69 @@
         var promise =  axios({
             url : url ,
             method :"GET",
-        })
-        
-        function infoLogin(){
-          var userName = document.getElementById('email').value ; 
+        });
+        function validate() {
+            var errorEmail =document.querySelector('.messageEmail') ; 
+            var errorPassword = document.querySelector('.messagePassword'); 
+          var   userName = document.getElementById('email').value ; 
           var password = document.getElementById('password').value ; 
-        //   console.log(userName,password);
-          promise
-            .then(function(data){
-                for(var i = 0  ; i < data.data.length ; i++){
-                    // if(data.data[i].username == userName && data.data[0].password == password){
-                    if(data.data[i].username == userName){
-                        if(data.data[i].password == password){
-                           
-                            Swal.fire({
-                                position: 'center',
-                                icon: 'success',
-                                title: 'Success',
-                                showConfirmButton: false,
-                                timer: 1000
-                            })
-                            var status = {
-                                statusLogin : true
-                            }
-                            localStorage.setItem("login", JSON.stringify(status))
-                            setTimeout( () => {
-                                window.location = './index.html'
-                            },1000)
-                        }
-                    }else{
-                        console.log('sai mk hoac tk')
-                    }
-                }
-            })
-            
+          if(userName === "" && password === ""){
+            errorEmail.innerHTML ="Vui lòng nhập Email";
+            errorEmail.style.display = "block" ; 
+            errorEmail.style.color = "red" ; 
+            errorEmail.style.fontSize = "14px"
+            errorPassword.innerHTML = "Vui lòng nhập mật khẩu";
+            errorPassword.style.display = "block" ; 
+            errorPassword.style.color = "red" ; 
+            errorPassword.style.fontSize = "14px" ; 
+         
+
+          } else {
+            errorEmail.innerHTML = "" ; 
+            errorEmail.style.display = "none" ; 
+            errorPassword.innerHTML ="" ;
+            errorPassword.style.display = "none ";
+            infoLogin() ; 
+          }
         }
+        function infoLogin(){
+            var userName = document.getElementById('email').value ; 
+            var password = document.getElementById('password').value ; 
+          //   console.log(userName,password);
+            promise
+              .then(function(data){
+                  for(var i = 0  ; i < data.data.length ; i++){
+                      // if(data.data[i].username == userName && data.data[0].password == password){
+                      if(data.data[i].username == userName){
+                          if(data.data[i].password == password){
+                             
+                              Swal.fire({
+                                  position: 'center',
+                                  icon: 'success',
+                                  title: 'Success',
+                                  showConfirmButton: false,
+                                  timer: 1000
+                              })
+                              var status = {
+                                  statusLogin : true
+                              }
+                              localStorage.setItem("login", JSON.stringify(status))
+                              setTimeout( () => {
+                                  window.location = './index.html'
+                              },1000)
+                              return ; 
+                          } else {
+                            
+                          }
+                      }
+                      }
+                  
+              })
+              .catch(function(error){
+                console.log(error);
+              });
+              
+          }
     
     </script>
   </body>

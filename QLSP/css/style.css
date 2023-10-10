@@ -71,3 +71,15 @@ margin-left: 10px;
 #DoanThang p {
 margin-bottom:  0 ;
 }
+@media screen  and (max-width:576px ) {
+    .table-container {
+        width: 100%; /* Độ rộng của khung chứa */
+        height: 100vh; /* Độ cao của khung chứa */
+        overflow: auto; 
+        overflow-x: auto;
+        }
+}
+table {
+    overflow-y:  auto;
+    overflow-x:auto
+}
