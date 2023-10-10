@@ -15,7 +15,8 @@
 
 .cart-dropdown {
     right: -80px;
-    z-index: 90000;
+    z-index: 991;
+    max-width: 300px;
 }
 
 
@@ -60,5 +61,16 @@
 
     #responsive-nav.active {
         width: 80%;
+    }
+
+    /* .cart-dropdown {
+        max-width: 100vw;
+    } */
+}
+
+@media screen and (max-width:282px) {
+    .cart-dropdown {
+        max-width: 250px;
+        right: -50px;
     }
 }
