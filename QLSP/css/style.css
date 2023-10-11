@@ -73,13 +73,17 @@ margin-bottom:  0 ;
 }
 @media screen  and (max-width:576px ) {
     .table-container {
-        width: 100%; /* Độ rộng của khung chứa */
-        height: 100vh; /* Độ cao của khung chứa */
+        width: 100%; 
+        height: 100vh;
         overflow: auto; 
         overflow-x: auto;
+        
         }
-}
-table {
+        nav .navbar-brand {
+            font-size: 20px;
+        }
+} 
+ table {
     overflow-y:  auto;
     overflow-x:auto
-}
+ }

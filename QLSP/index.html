@@ -25,7 +25,7 @@
 
 <body>
 
-  <div class="">
+  <div class="nav_bar">
     <div class="container-fluid">
       <nav class="navbar navbar-light   justify-content-between">
 
@@ -57,34 +57,38 @@
         <button class="btn btn-danger">Xuất </button>
         <button class="btn btn-danger"><a href="https://bc-55-capstone-js.vercel.app/" style="color:white; "
             id="quaylai">Quay lại website</a></button>
-            <button class="btn btn-danger" onclick="logOut()">Đăng xuất</button>
+        <button class="btn btn-danger" onclick="logOut()">Đăng xuất</button>
 
-    </div>
-    <br>
- 
-    <div class="table-container">
-     <table class="table table-bordered" >
-      <thead>
-    <tr id="row1">
-<th>ID</th>
-<th>Name product</th>
-<th > <div id="DoanThang"><p>Price</p>  
-  <select name="type" id="SapXep" onchange="sortProduct()">
-  <option value=""> Chọn sắp xếp </option>
-  <option value="Tang">Sắp xếp tăng </option>
-  <option value="Giam">sắp xếp giảm</option>
-</select ></div></th> 
-<th>Screen</th>
-<th>BackCamera</th>
-<th>FrontCamera</th>
-<th>Picture product</th>
-<th>Desc</th>
-<th>Type</th>
-<th>Action</th>
-    </tr>
-  </thead>
-<tbody class="DanhSachSanPham">
-    <!--<tr>
+      </div>
+      <br>
+
+      <div class="table-container row row-col-1">
+        <table class="table table-bordered">
+          <thead>
+            <tr id="row1">
+              <th>ID</th>
+              <th>Name product</th>
+              <th>
+                <div id="DoanThang">
+                  <p>Price</p>
+                  <select name="type" id="SapXep" onchange="sortProduct()">
+                    <option value=""> Chọn sắp xếp </option>
+                    <option value="Tang">Sắp xếp tăng </option>
+                    <option value="Giam">sắp xếp giảm</option>
+                  </select>
+                </div>
+              </th>
+              <th>Screen</th>
+              <th>BackCamera</th>
+              <th>FrontCamera</th>
+              <th>Picture product</th>
+              <th>Desc</th>
+              <th>Type</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="DanhSachSanPham">
+            <!--<tr>
 
         <td>1</td>
         <td>iphoneX	</td>
@@ -212,22 +216,23 @@
         timer: 1000,
       });
       setTimeout(function () {
-        window.location= "./login.html";
+        window.location = "./login.html";
       }, 1000);
     }
-    
-      function alerInfo(){
-        
-       Swal.fire({
-          title: 'Setting update!',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          }
-        })} 
-  ///hello moi nguoi 
+
+    function alerInfo() {
+
+      Swal.fire({
+        title: 'Setting update!',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+    }
+    ///hello moi nguoi 
   </script>
 </body>
 
