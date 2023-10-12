@@ -35,7 +35,7 @@
         padding: 32px 24px;
         text-align: center;
         background: #fff;
-        border-radius: 12px;
+      
         margin: 24px;
         align-self: center;
         box-shadow: 0 2px 5px 0 rgba(51,62,73,.1);
@@ -108,7 +108,7 @@
         border: none;
         width: 100%;
         font-size: 14px;
-        border-radius: 8px;
+        
         cursor: pointer;
     }
     
@@ -123,28 +123,61 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center ;
     background-color: #191a2e;
     height: 100vh;
  
     }
     .app {
         box-shadow: rgba(176, 51, 51, 0.249) 0px 7px 29px 0px;
+        margin-top :40px
     }
+    .heading1 {
+        text-align: left;
+        padding-bottom: 20px;
+    }
+tr td {
+font-size: 16px;
+font-weight: 600;
+
+}
+.btn {
+width: 100%;
+height: 100%;
+background-color: #006bcf;
+color:white;
+}
+#remember{
+font-size: 20x;
+}
+.rememberPassword {
+display: inline-flex;
+}
+.rememberPassword label {
+font-size: 14px;
+margin:5px;
+}
+.form .desc {
+font-size: 18px;
+font-weight: 600;
+color:black ;
+}
 </style>
   </head>
   <body>
+    <div class="login__content">
 <div class="app">
     <div class="">
         <form class="form" id="form-2">
             <h3 class="heading">Đăng nhập</h3>
-            <p class="desc">Quản lý sản phẩm ❤️</p>
+            <p class="desc">Product Management</p>
     
             <div class="spacer"></div>
     
             <div class="form-group">
               <label for="email" class="form-label">Email</label>
-              <input id="email" name="email" type="text" placeholder="Nhập địa chỉ Email" class="form-control">
+              <input id="email" name="email" type="text" placeholder="Nhập địa chỉ Email "  class="form-control">
+         
               <span class="messageEmail"></span>
             </div>
     
@@ -152,6 +185,11 @@
               <label for="password" class="form-label">Mật khẩu</label>
               <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
               <span class="messagePassword"></span>
+              <br>
+              <div class="rememberPassword">
+              <input type="checkbox" id="remember"id="rememberpass" value="">
+              <label for="">Remember Me</label>
+              </div>
             </div>
     
             <button type="button" class="form-submit" onclick="validate()">Đăng nhập</button>
@@ -160,6 +198,30 @@
       
       
 </div>
+<div class="app">
+    <div class="">
+        <form class="form" id="form-2">
+            <h3 class="heading1">Click to start Sesstion !</h3>
+    <table class="table table-bordered">
+        <tr>
+            <td>admin1</td>
+            <td>123</td>
+            <td><button  type="button" class="btn" id="adminInfo" onclick="domEvent('admin1','123')">Apply</button></td>
+        </tr>
+        <tr>
+            <td>admin</td>
+            <td>admin</td>
+            <td><button type="button" class="btn" id="adminInfo" onclick="domEvent('admin','admin')">Apply</button></td>
+        </tr>
+    </table>
+         
+          </form>
+    </div>
+      
+      
+</div>
+</div>
+
 
 
     <!-- Optional JavaScript -->
@@ -171,9 +233,10 @@
     integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script>
-
+        
         
         var url =  "https://650f9b0d54d18aabfe9a203b.mockapi.io/api/v1/users" ; 
         var promise =  axios({
@@ -189,11 +252,13 @@
             errorEmail.innerHTML ="Vui lòng nhập Email";
             errorEmail.style.display = "block" ; 
             errorEmail.style.color = "red" ; 
-            errorEmail.style.fontSize = "14px"
+            errorEmail.style.textAlign = "center";
+            errorEmail.style.fontSize = "14px";
             errorPassword.innerHTML = "Vui lòng nhập mật khẩu";
             errorPassword.style.display = "block" ; 
             errorPassword.style.color = "red" ; 
             errorPassword.style.fontSize = "14px" ; 
+            errorPassword.style.textAlign = "center";
          
 
           } else {
@@ -227,21 +292,29 @@
                               }
                               localStorage.setItem("login", JSON.stringify(status))
                               setTimeout( () => {
-                                  window.location = './index.html'
+                                  window.location = './index.html';
                               },1000)
-                              return ; 
+                              
                           } else {
                             
                           }
                       }
                       }
-                  
-              })
+                    })
+           
               .catch(function(error){
                 console.log(error);
               });
               
-          }
+          
+        }
+       function domEvent(adminName,adminPassword){
+     document.getElementById('email').value = adminName
+     document.getElementById('password').value =adminPassword ;
+       }
+  
+    
+    
     
     </script>
   </body>
