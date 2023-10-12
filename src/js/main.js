@@ -25,7 +25,7 @@ function renderNewProduct(products) {
   var iphoneItem = [];
   var samsungItem = [];
   var itemString = '';
-  var newProduct = products.slice(-10);
+  var newProduct = products.length >= 10 ? products.slice(-10) : products;
   newProduct.map((item) => {
     itemString = `
       <div class="product">
@@ -80,11 +80,14 @@ function renderNewProduct(products) {
     $a('#samsungtab .products-slick').innerHTML = samsungItem.join('');
   });
 }
-function renderListProduct(products) {
+function renderListProduct(products, limit = 0) {
   var iphoneItem = [];
   var samsungItem = [];
   var itemString = '';
-  var newProduct = products.slice(-10);
+  var newProduct =
+    products.length >= limit && limit > 0
+      ? products.slice(limit * -1)
+      : products;
   newProduct.map((item) => {
     itemString = `
       <div class="product">
