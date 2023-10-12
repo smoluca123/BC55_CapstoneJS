@@ -184,7 +184,11 @@ function detailProduct(id) {
   $a('.modal-body .product-preview img').src = product.img;
   $a('.modal-body .product-name').innerHTML = product.name;
   $a('.modal-body .product-price').innerHTML = formatUSD(product.price);
-  $a('.modal-body .product-desc').innerHTML = product.desc;
+  $a('.modal-body .product-desc').innerHTML = `
+    ${product.desc}
+    <p>Cam trước : ${product.frontCamera}</p>
+    <p>Cam sau : ${product.backCamera}</p>
+  `;
   $a('.modal-body .add-to-cart .add-to-cart-btn').onclick = function () {
     addProductToCart(id, +qty.value);
     $a('.close').click();
@@ -239,6 +243,15 @@ function changeQty(id, n) {
   renderCartItem(cart);
 }
 
+function checkoutCart() {
+  if (cart.listProduct.length <= 0) {
+    notiAlert('center', 'error', 'Không có sản phẩm', 1000);
+    return;
+  }
+  clearCart();
+  notiAlert('center', 'success', 'Thanh toán thành công', 1000);
+}
+
 function setCartLocalStoregrade(data) {
   localStorage.setItem('cart', JSON.stringify(data));
 }
@@ -254,6 +267,16 @@ function getCartLocalStoregrade() {
 
 getProduct();
 getCartLocalStoregrade();
+
+function notiAlert(position, icon, title, timer) {
+  Swal.fire({
+    position,
+    icon,
+    title,
+    showConfirmButton: false,
+    timer,
+  });
+}
 
 function addSlick() {
   // Products Slick
