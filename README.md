@@ -13,3 +13,5 @@ Task : [Sheets](https://docs.google.com/spreadsheets/d/1iJlBCxyJjZagj0zZe2gBatEr
 
 https://capstonejs.smoteam.com/
 
+## Youtube Preview
+Video : [Video](https://www.youtube.com/watch?v=wkwCiUlpgHU&ab_channel=FEVuiT%C3%ADnh)
