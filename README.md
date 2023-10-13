@@ -1,7 +1,7 @@
 
 # CapstoneJS | BC55_Luca-PhuongTay
 
-Task : Empty
+Task : [Sheets](https://docs.google.com/spreadsheets/d/1iJlBCxyJjZagj0zZe2gBatErI8tGVjITtcMW_cqGwxw/edit#gid=0)
 
 
 ## Authors
